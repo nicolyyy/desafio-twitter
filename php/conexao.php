@@ -1,25 +1,43 @@
-
 <?php
-
-define( 'MYSQL_HOST', 'localhost' );
-define( 'MYSQL_USER', 'root' );
-define( 'MYSQL_PASSWORD', '' );
-define( 'MYSQL_DB_NAME', 'desafio-twitter' );
-
-echo '<p>aaaa</p>';
-
-try
-{
-    $PDO = new PDO( 'mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD );
-}
-catch ( PDOException $e )
-{
-    echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
-}
+define('host', 'localhost');
+define('user', 'root');
+define('password', '');
+define('db_name', 'desafio-twitter');
 
 
+try {
+    $PDO = new PDO('mysql:host='. host . ';dbname=' . db_name, user, password);
+    // set the PDO error mode to exception
+   /* $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
+    /*echo "Connected successfully";  */
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
 
-var_dump($PDO);
+
+   
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $sql = "INSERT INTO usuarios(nome, email, senha) VALUES('$nome','$email','$senha')";
+    $stmt = $PDO->prepare( $sql );
+    
+    $stmt->bindParam( ':nome', $nome );
+    $stmt->bindParam( ':email', $email );
+    $stmt->bindParam( ':senha', $senha );
+  
+     
+    $result = $stmt->execute();
+     
+    if ( ! $result )
+    {
+        var_dump( $stmt->errorInfo() );
+        exit;
+    }
+     
+    echo $stmt->rowCount() . "linhas inseridas";
+
 ?>
-
-
