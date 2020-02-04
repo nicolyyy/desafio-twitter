@@ -24,15 +24,8 @@ define('db_name', 'desafio-twitter');
       exit;
   }
  else{
-
   echo "entra";
- /*
-  $user = $users[0];
-   
- 
-  $_SESSION['id'] = $user['id'];
-  $_SESSION['nome'] = $user['nome'];
-    header('Location: index.php'); */
+  header("location: telainicial.php"); die('Não ignore meu cabeçalho...');
  }
    
 
