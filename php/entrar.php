@@ -1,10 +1,8 @@
 <?php
+require_once ("funcoes.php");
+$con =  conexao();
 
-define('host', 'localhost');
-define('user', 'root');
-define('password', '');
-define('db_name', 'desafio-twitter');
-
+function entrar($con){
   $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
   $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
   
@@ -20,15 +18,20 @@ define('db_name', 'desafio-twitter');
    
   if (count($users) <= 0)
   {
-      echo "Email ou senha incorretos";
-      exit;
+    echo "<script>
+    alert('Credenciais Inválidas. Tente Novamente.');
+    window.location.replace('../singin.html');
+    </script>"; 
   }
  else{
-  echo "entra";
-  header("location: telainicial.php"); die('Não ignore meu cabeçalho...');
+  echo "<script>
+  window.location.replace('telainicial.php');
+  </script>"; 
  }
    
+return ($con);
+}
 
-
+entrar($con);
 
 ?>

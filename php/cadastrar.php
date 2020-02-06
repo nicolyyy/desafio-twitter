@@ -1,10 +1,7 @@
 <?php
-
 require_once ("funcoes.php");
-
-$teste =  conexao();
-
-function cadastrar($teste){
+$con =  conexao();
+function cadastrar($con){
     
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
@@ -18,8 +15,12 @@ function cadastrar($teste){
     }
     
     if($nome == $row['nome']){
-        echo "Conta existente";
+        echo "<script>
+        alert('Conta Existente!');
+        window.location.replace('../singup.html');
+      </script>"; 
         die();
+       
      }
     else{
     $sql = "INSERT INTO usuarios(nome, email, senha) VALUES('$nome','$email','$senha')";
@@ -28,12 +29,12 @@ function cadastrar($teste){
     $stmt->bindParam( ':email', $email );
     $stmt->bindParam( ':senha', $senha );
     /* $result = $stmt->execute(); */
-    echo "Cadastro realizado com sucesso";
-    
+    echo "<script>
+        alert('Conta Cadastrada Com Sucesso!');
+        window.location.replace('../singin.html');
+      </script>"; 
     }
-
-    return $teste;
-    var_dump($teste);
+    return $con;
 }
- cadastrar($teste);
+ cadastrar($con);
 ?>

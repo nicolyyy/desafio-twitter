@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,6 +23,7 @@
   </div>
 </nav>
 
+<div style="background-image: url('background.jpg')";>
 <div class="img-fluid" style="position: relative;">
     <img src="background.jpg" class="img-fluid" style="position:absolute; z-index: 1;" alt="Responsive image">
         <div style="border-radius: 730px;"width="35" height="30" >
@@ -37,23 +33,18 @@
           <button class="btn btn-primary btn-sm " style="border-radius: 7%; color:white; font-weight: bold; position:absolute; width: 100px; top: 418px; left: 28%; z-index: 3;" type="submit">Editar</button>
         </div>
 </div>
+</div>
 
 <form action="#" method="POST" target="_self">
 <div  class="container" style=" background-color : #343a40;">
 <div class="input-group" style="position: relative; top: 480px; width: 100%; margin-right: auto; margin-left: auto;" >
   <input  type="text"   name="tweetar" style="height: 100px; border: 1px solid  rgba(21, 32, 43, 0.5); font-size: 21px;" class="form-control" placeholder="O que está acontecendo?" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
-  <?php $tweet =($_POST['tweetar']) ? $_POST['tweetar'] : '';
-
- 
-     ?>
+  <?php $tweet = isset($_POST['tweetar']) ? $_POST['tweetar'] : ''; ?>
   <div class="input-group-append"   id="button-addon4">
    <button class="btn btn-primary" style="height: 40px; top: 30%; left: 10%; border-radius: 7px;" type="submit">Tweetar</button>
-   
   </div>
- 
 </div>
 </div>
-
 </form>
 
 
@@ -87,15 +78,29 @@
      <?php
       echo $tweet;
     ?>
-    <p class="card-text" ></p>
-   
   </div>
 </div>
 
+<?php
 
+$array = array([$tweet]);
 
+echo $array;
 
-
+  $row = '<div class="card" style="position: relative; margin: 20px; top: 580px; width: 50%; margin-right: auto; margin-left: auto; background-color: rgb(21, 32, 43);">
+  <div class="card-header" style="font-weight: bold; color: white; ">
+   Tweet
+  </div>
+  <div class="card-body" style=" color: white;">
+            <img src="perfil.jpg" style="position:relative; left:1px; top:-5px; left: 0px; z-index: 2; border-radius: 50%; height: 40px; width: 40px;" alt="...">
+            <span style="font-weight: bold; margin-left: 7px;">Nicoly Jobs</span>
+    <h5 style="margin-top: 5px;" class="card-title"></h5>
+     <?php
+      echo $tweet;
+    ?>
+  </div>
+</div>';
+?>
 
 </body>
 </html>
