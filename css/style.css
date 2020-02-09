@@ -202,6 +202,7 @@ footer p {
     margin-top: 18px;
     font-family: 'Ubuntu', sans-serif;
     width: 50%;
+   color: rgb(152, 159, 165, 1.5);
 }
 
 .form-singup input {
@@ -209,12 +210,17 @@ footer p {
     box-shadow: #e4e5e6;
     height: 40px;
     display: block;
-    margin-top: 10px;
+    margin-top: 4px;
     font-size: 18px;
+    border-bottom: 2px solid #8899A6;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 2px;
 }
 
 .form-singup input[type="submit"] {
-    width: 120px;
+    width: 125px;
     height: 32px;
     border-radius: 28px;
     border: 1px solid #1991DA;
@@ -223,8 +229,9 @@ footer p {
     font-size: 14px;
     cursor: pointer;
     position: relative;
-    margin-top: 40px;
-    left: 33.333%;
+    margin-top: 45px;
+    left: 30.333%;
+
 }
 
 .form-singup input[type="submit"]:hover {
@@ -274,6 +281,7 @@ footer p {
     font-family: 'Ubuntu', sans-serif;
     width: 100%;
     text-align: center;
+    color: rgb(152, 159, 165, 1.5);
 }
 
 .form-singin input[type="text"],
@@ -287,23 +295,49 @@ footer p {
     font-size: 18px;
     left: 35.3%;
     text-align: center;
+    border-bottom: 1px solid #8899A6;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+
+
+ 
 }
 
 .form-singin input[type="submit"] {
     position: absolute;
     top: 85%;
-    width: 150px;
-    height: 32px;
+    width: 30%;
+    height: 42px;
     font-weight: bold;
     border-radius: 28px;
     border: 1px solid #1991DA;
     background-color: #1991DA;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
-    left: 45%;
+    left: 35%;
 }
 
 .form-singin input[type="submit"]:hover {
     background-color: #006DBF;
+}
+
+
+.ask{
+    width: 50%;
+    justify-content: center;
+    height: auto;
+    position: relative;
+    top: 70%;
+    left: 40.3%;
+    overflow: hidden;
+   
+}
+.ask a[href="#"]{
+   margin-top: 500px;
+ justify-content: center;
+  color: #1995C3;
+  margin-right: 10px;
+   width: 20%;
 }

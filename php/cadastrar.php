@@ -1,7 +1,8 @@
 <?php
 require_once ("funcoes.php");
 $con =  conexao();
-function cadastrar($con){
+
+ function cadastrar($con){
     
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
@@ -28,13 +29,13 @@ function cadastrar($con){
     $stmt->bindParam( ':nome', $nome );
     $stmt->bindParam( ':email', $email );
     $stmt->bindParam( ':senha', $senha );
-    /* $result = $stmt->execute(); */
+    $result = $stmt->execute(); 
     echo "<script>
         alert('Conta Cadastrada Com Sucesso!');
         window.location.replace('../singin.html');
       </script>"; 
     }
     return $con;
-}
- cadastrar($con);
+} 
+  cadastrar($con);
 ?>
