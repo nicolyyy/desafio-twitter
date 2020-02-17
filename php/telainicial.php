@@ -38,9 +38,26 @@
 <form action="#" method="POST" target="_self">
 <div  class="container" style=" background-color : #343a40;">
 <div class="input-group" style="position: relative; top: 480px; width: 100%; margin-right: auto; margin-left: auto;" >
-  <input  type="text"   name="tweetar" style="height: 100px; border: 1px solid  rgba(21, 32, 43, 0.5); font-size: 21px;" class="form-control" placeholder="O que está acontecendo?" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+  <input  type="text"   name="tweet" style="height: 100px; border: 1px solid  rgba(21, 32, 43, 0.5); font-size: 21px;" class="form-control" placeholder="O que está acontecendo?" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
   <?php 
-    $tweet = isset($_POST['tweetar']) ? $_POST['tweetar'] : '';
+  session_start();
+  require_once "funcoes.php";
+  conexao();
+  $PDO = new PDO('mysql:host='. host . ';dbname=' . db_name, user, password);
+  $idAtual = $_SESSION['ID'];
+  $tweet = isset($_POST['tweet']) ? $_POST['tweet'] : '';
+  $select = "SELECT tweet FROM usuarios WHERE ID = '$idAtual'"; 
+  $query = $PDO ->query($select);
+  $fetchTweet = $query->fetchAll(PDO::FETCH_ASSOC);
+  $pegarTweet = $fetchTweet[0];
+  $_SESSION['user_tweet'] = $pegarTweet['tweet'];
+  
+  $sql = "UPDATE usuarios SET tweet='$tweet' WHERE ID = $idAtual ";
+  $stmt = $PDO->prepare( $sql );
+  $query = $PDO ->query($select);
+  $fetchTweet = $query->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->bindParam(':tweet', $tweet);
+  $result = $stmt->execute(); 
    ?>
   <div class="input-group-append"   id="button-addon4">
    <button class="btn btn-primary" style="height: 40px; top: 30%; left: 10%; border-radius: 7px;" type="submit">Tweetar</button>
@@ -78,7 +95,7 @@
             <span style="font-weight: bold; margin-left: 7px;">Nicoly Jobs</span>
     <h5 style="margin-top: 5px;" class="card-title"></h5>
      <?php
-      echo $tweet;
+     echo $_SESSION['user_tweet'];
     
     /*
       $cont  = array();
