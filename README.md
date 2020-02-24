@@ -1,1 +1,1 @@
-Este repositorio foi criado com o objetivo de participar e concluir o desafio de criação de uma simples interface da rede social Twitter
+Repositório criado com o objetivo de realizar o desafio proposto pela Coordenaria de Tecnologia da Informação e Comunicação, que consiste em criar de uma interface "clone" do Twitter(com apenas algumas funcionalidades básicas de cadastro e login) no período de uma sprint de 2 semanas.
